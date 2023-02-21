@@ -1,6 +1,7 @@
 
 import java.util.Scanner;
 
+//este programa resive 2 dotas y da el producto//
 public class CalculadoraSalario {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
