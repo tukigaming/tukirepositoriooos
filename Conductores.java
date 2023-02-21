@@ -41,7 +41,7 @@ public class Conductores {
             System.out.println(
                     "Deme el número de kilómetros recorridos: ");
             kilometros = entrada.nextDouble();
-            entrada.close();
+        
         }
     }
 
