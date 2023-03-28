@@ -1,13 +1,13 @@
 import java.util.Scanner;
 
-public class Simpletron {
+public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        double[] memory = new double[1000];
-        double acumulador = 0;
+        int[] memory = new int[100];
+        int acumulador = 0;
         int contadorDeInstrucciones = 0;
         int codigoDeOperacion = 0;
-        int operando = 100;
+        int operando = 0;
         int registroDeInstruccion = 0;
         
         System.out.println("* Bienvenido a Simpletron! *");
@@ -21,25 +21,22 @@ public class Simpletron {
         do {
             System.out.printf("%02d ? ", contadorDeInstrucciones);
             int instruccion = input.nextInt();
-            if (instruccion == -99999) {
+            if (instruccion == -9999) {
                 break;
             }
             memory[contadorDeInstrucciones] = instruccion;
             contadorDeInstrucciones++;
-            
-        } while (contadorDeInstrucciones < 1000);
+        } while (contadorDeInstrucciones < 100);
         
         System.out.println("* Se completo la carga del programa *");
         System.out.println("* Empieza la ejecucion del programa *");
         
         // Ejecución del programa en Simpletron
         contadorDeInstrucciones = 0;
-
-        while (codigoDeOperacion != 43) {
-            registroDeInstruccion = (int) memory[contadorDeInstrucciones];
+        while (true) {
+            registroDeInstruccion = memory[contadorDeInstrucciones];
             codigoDeOperacion = registroDeInstruccion / 100;
             operando = registroDeInstruccion % 100;
-            
             switch (codigoDeOperacion) {
                 case 10: // Leer
                     System.out.print("Ingrese un entero: ");
@@ -57,14 +54,14 @@ public class Simpletron {
                     break;
                 case 30: // Sumar
                     acumulador += memory[operando];
-                    if (acumulador > 9999 || acumulador < -99999) {
+                    if (acumulador > 9999 || acumulador < -9999) {
                         System.out.println("* ERROR: Desbordamiento del acumulador *");
                         System.exit(1);
                     }
                     break;
                 case 31: // Restar
                     acumulador -= memory[operando];
-                    if (acumulador > 9999 || acumulador < -99999) {
+                    if (acumulador > 9999 || acumulador < -9999) {
                         System.out.println("* ERROR: Desbordamiento del acumulador *");
                         System.exit(1);
                     }
@@ -76,45 +73,16 @@ public class Simpletron {
                     }
                     acumulador /= memory[operando];
                     break;
-                    case 33: // residuo
-                    if (memory[operando] == 0) {
-                        System.out.println("* ERROR: Division por cero *");
-                        System.exit(1);
-                    }
-                    acumulador %= memory[operando];
-                    break;
-
-                    case 14:
-                    double base,expo,resut;
-                    base=acumulador;
-                    expo=memory[operando];
-                    resut=Math.pow(base,expo);
-                    acumulador=(int )resut;
-                    break; 
-
-                    case 15:
-                    int numeroHex = 0x1F;
-                    base=acumulador;
-                    expo=memory[operando];
-                    System.out.println(numeroHex);
-                    break;
-
-                    case 16:
-                    base=acumulador;
-                    expo=memory[operando];
-                    System.out.println("\n");
-                    break;
-
-                    case 17:
-                    base=acumulador;
-                    expo=memory[operando];
-
-
-
-
-
+                  }
+                }
+              }
             }
-            contadorDeInstrucciones++;
-        } 
-    }
-} 
+          
+              
+            
+          
+                    
+      
+        
+          
+      
