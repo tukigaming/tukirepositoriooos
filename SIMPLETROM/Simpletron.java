@@ -18,10 +18,26 @@ public class Simpletron {
 
         System.out.println("* Bienvenido a Simpletron *");
         System.out.println("* Por favor ingrese el nombre del archivo que contiene su programa *");
+        System.out.println("* (o palabra de datos) a la vez. Yo le mostrare *");
+        System.out.println("* el numero de ubicacion y un signo de interrogacion (?) *");
+        System.out.println("* Entonces usted escribira la palabra para esa ubicacion. *");
+        System.out.println("* Teclee -9999 para dejar de introducir su programa. *");
 
         String fileName = input.nextLine();
         File inputFile = new File(fileName);
-
+        do {
+            System.out.printf("%02d ? ", contadorDeInstrucciones);
+            int instruccion = input.nextInt();
+            if (instruccion == -99999) {
+                break;
+            }
+            memory[contadorDeInstrucciones] = instruccion;
+            contadorDeInstrucciones++;
+            
+        } while (contadorDeInstrucciones < 1000);
+        
+        System.out.println("* Se completo la carga del programa *");
+        System.out.println("* Empieza la ejecucion del programa *");
         try {
             Scanner fileInput = new Scanner(inputFile);
 
